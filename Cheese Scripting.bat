@@ -2,15 +2,16 @@
 @echo off
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\"
+mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\APP\"
 set Projects=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\
 set Tutorial=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\
-set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\processScript.ps1"
+set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\APP\processScript.ps1
 @echo param (>%processscriptfile%
 @echo     [string]$scriptPath>>%processscriptfile%
 @echo )>>%processscriptfile%
 @echo $lines = Get-Content -Path $scriptPath>>%processscriptfile%
 @echo foreach ($line in $lines) {>>%processscriptfile%
-@echo     $trimmedLine = $line.Trim()  # Remove any leading or trailing whitespace>>%processscriptfile%
+@echo     $trimmedLine = $line.Trim()>>%processscriptfile%
 @echo     if ($trimmedLine -ieq 'cls') {>>%processscriptfile%
 @echo         Write-Host $trimmedLine -ForegroundColor DarkRed>>%processscriptfile%
 @echo     } elseif ($trimmedLine -ilike 'title*') {>>%processscriptfile%
@@ -58,7 +59,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.4 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.5 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -369,7 +370,7 @@ cls
 if exist "%scriptPath%" (
     cls
 	powershell write-host -back blue -fore white "Commands can still be used like ?Export or ?Notepad. Script:"
-    powershell -ExecutionPolicy Bypass -File "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\processScript.ps1" -scriptPath "%scriptPath%"
+    powershell -ExecutionPolicy Bypass -File "%processscriptfile%" -scriptPath "%scriptPath%"
     goto batchscript
 ) else (
     goto filedoesntexist
