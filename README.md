@@ -1,5 +1,5 @@
 # Cheese-Scripting
-Advanced application for making coding batch easy.
+Advanced application for making coding batch easy for windows.
 
 Cheese Scripting uses .bat to run, and has a variety of different commands/tools to make your life easier!
 
