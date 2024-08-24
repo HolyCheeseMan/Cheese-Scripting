@@ -1,3 +1,34 @@
+: installproccessscript
+@echo off
+mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
+mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\"
+set Projects=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\
+set Tutorial=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\
+set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\processScript.ps1"
+@echo param (>%processscriptfile%
+@echo     [string]$scriptPath>>%processscriptfile%
+@echo )>>%processscriptfile%
+@echo $lines = Get-Content -Path $scriptPath>>%processscriptfile%
+@echo foreach ($line in $lines) {>>%processscriptfile%
+@echo     $trimmedLine = $line.Trim()  # Remove any leading or trailing whitespace>>%processscriptfile%
+@echo     if ($trimmedLine -ieq 'cls') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor DarkRed>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'title*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor DarkBlue>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'echo*' -or $trimmedLine -ilike '@echo*') {>>%processscriptfile%
+@echo         if ($trimmedLine -like '*:*') {>>%processscriptfile%
+@echo             Write-Host $trimmedLine -ForegroundColor DarkRed -BackgroundColor Yellow>>%processscriptfile%
+@echo         } else {>>%processscriptfile%
+@echo             Write-Host $trimmedLine -ForegroundColor DarkGreen>>%processscriptfile%
+@echo         }>>%processscriptfile%
+@echo     } elseif ($trimmedLine -like '*:*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor DarkRed -BackgroundColor Yellow>>%processscriptfile%
+@echo     } else {>>%processscriptfile%
+@echo         Write-Host $trimmedLine>>%processscriptfile%
+@echo     }>>%processscriptfile%
+@echo }>>%processscriptfile%
+
+
 goto menu
 
 
@@ -27,7 +58,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.3 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.4 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -336,15 +367,14 @@ if "%scriptPath%"=="?tipsearch" goto Tipsearch
 : check-fileload
 cls
 if exist "%scriptPath%" (
-	cls
+    cls
 	powershell write-host -back blue -fore white "Commands can still be used like ?Export or ?Notepad. Script:"
-    for /f "usebackq delims=" %%a in ("%scriptPath%") do (
-        echo %%a
-    )
-	goto batchscript
+    powershell -ExecutionPolicy Bypass -File "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\processScript.ps1" -scriptPath "%scriptPath%"
+    goto batchscript
 ) else (
-	goto filedoesntexist
+    goto filedoesntexist
 )
+
 
 
 : batchscript
@@ -1318,7 +1348,15 @@ if /I "%query_upper%"=="OPTION" (
 ) else (
     echo Searching...
 )
-: search14
+
+: search15
+if /I "%query_upper%"=="EXIST" (
+    goto EXISTS
+) else (
+    echo Searching...
+)
+
+: search16
 if /I "%query_upper%"=="LABEL" (
     goto LABELQUERYQUESTION
 ) else (
