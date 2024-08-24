@@ -6,7 +6,7 @@ By Holy Cheese Man.
 Thanks For Using.
 C:
 
-Plan - Tutorial
+
 
 
 
@@ -27,7 +27,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.2 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.3 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -47,6 +47,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 
 goto menu
 
@@ -63,6 +65,7 @@ powershell write-host -back green -fore white ?Export - Exports your project to 
 powershell write-host -fore white ?Load - Loads a script.
 powershell write-host -fore white ?Notepad - Opens notepad to current script.
 powershell write-host -back darkyellow -fore white ?Tutorial - Advanced comprehensive beginners tutorial to batch.
+powershell write-host -back darkred -fore white ?Tipsearch - Search for coding tips.
 set /p commands= 
 if "%commands%"=="?Help" goto help
 if "%commands%"=="?Menu" goto menu
@@ -80,6 +83,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 
 goto help
 
@@ -106,6 +111,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 
 : Notepad
 cls
@@ -128,6 +135,8 @@ if "%filename%"=="?Notepad" goto Notepad
 if "%filename%"=="?notepad" goto Notepad
 if "%filename%"=="?Tutorial" goto Tutorial
 if "%filename%"=="?tutorial" goto Tutorial
+if "%filename%"=="?Tipsearch" goto Tipsearch
+if "%filename%"=="?tipsearch" goto Tipsearch
 goto Notepad
 
 : new-file
@@ -152,6 +161,8 @@ if "%filename%"=="?Notepad" goto Notepad
 if "%filename%"=="?notepad" goto Notepad
 if "%filename%"=="?Tutorial" goto Tutorial
 if "%filename%"=="?tutorial" goto Tutorial
+if "%filename%"=="?Tipsearch" goto Tipsearch
+if "%filename%"=="?tipsearch" goto Tipsearch
 set scriptPath=%Projects%\%filename%.bat
 goto newfilecheck
 : newfilecheck
@@ -183,6 +194,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 	if "%commands%"=="1" goto createdscript
 	if "%commands%"=="2" goto newfilewarningN
 	goto newfilecheck
@@ -208,6 +221,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 
 : createdscript
 	cls
@@ -233,6 +248,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 	goto createdscript
 
 : load
@@ -259,6 +276,8 @@ if "%loadoption%"=="?Notepad" goto Notepad
 if "%loadoption%"=="?notepad" goto Notepad
 if "%loadoption%"=="?Tutorial" goto Tutorial
 if "%loadoption%"=="?tutorial" goto Tutorial
+if "%loadoption%"=="?Tipsearch" goto Tipsearch
+if "%loadoption%"=="?tipsearch" goto Tipsearch
 if "%loadoption%"=="1" goto personalload
 if "%loadoption%"=="2" goto otherload
 goto load
@@ -288,6 +307,8 @@ if "%filenameload%"=="?Export" goto export
 if "%filenameload%"=="?export" goto export
 if "%filenameload%"=="?Tutorial" goto Tutorial
 if "%filenameload%"=="?tutorial" goto Tutorial
+if "%filenameload%"=="?Tipsearch" goto Tipsearch
+if "%filenameload%"=="?tipsearch" goto Tipsearch
 set scriptPath=%Projects%\%filenameload%.bat
 goto check-fileload
 : otherload
@@ -310,11 +331,13 @@ if "%scriptPath%"=="?Notepad" goto Notepad
 if "%scriptPath%"=="?notepad" goto Notepad
 if "%scriptPath%"=="?Tutorial" goto Tutorial
 if "%scriptPath%"=="?tutorial" goto Tutorial
+if "%scriptPath%"=="?Tipsearch" goto Tipsearch
+if "%scriptPath%"=="?tipsearch" goto Tipsearch
 : check-fileload
 cls
 if exist "%scriptPath%" (
 	cls
-	powershell write-host -back blue -fore white "Commands can still be used. Script:"
+	powershell write-host -back blue -fore white "Commands can still be used like ?Export or ?Notepad. Script:"
     for /f "usebackq delims=" %%a in ("%scriptPath%") do (
         echo %%a
     )
@@ -342,6 +365,8 @@ if "%code%"=="?Notepad" goto Notepadopen
 if "%code%"=="?notepad" goto Notepadopen
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 @echo %code%>>"%scriptPath%"
 goto check-fileload
 
@@ -378,6 +403,8 @@ if "%exportfile%"=="?Notepad" goto Notepad
 if "%exportfile%"=="?notepad" goto Notepad
 if "%exportfile%"=="?Tutorial" goto Tutorial
 if "%exportfile%"=="?tutorial" goto Tutorial
+if "%exportfile%"=="?Tipsearch" goto Tipsearch
+if "%exportfile%"=="?tipsearch" goto Tipsearch
 
 if exist "%scriptPath%" (
 	goto export2
@@ -411,6 +438,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 goto help
 
 : filedoesntexist
@@ -434,6 +463,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 goto filedoesntexist
 
 
@@ -460,6 +491,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 cls
 powershell write-host -back green -fore white First of all, this is a advanced scripting app for coding batch.
 powershell write-host -back darkyellow -fore white So thank you for using it for this guide.
@@ -481,6 +514,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 cls
 : Tutorial2
 powershell write-host -back green -fore white 1: Commands in this app:
@@ -504,6 +539,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 cls
 goto Tutorial2
 
@@ -530,6 +567,8 @@ if "%filename%"=="?Notepad" goto Notepad
 if "%filename%"=="?notepad" goto Notepad
 if "%filename%"=="?Tutorial" goto Tutorial
 if "%filename%"=="?tutorial" goto Tutorial
+if "%filename%"=="?Tipsearch" goto Tipsearch
+if "%filename%"=="?tipsearch" goto Tipsearch
 set scriptPath=%Tutorial%\%filename%.bat
 goto newfilechecktutorial
 : newfilechecktutorial
@@ -561,6 +600,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 	if "%commands%"=="1" goto createdscripttutorial
 	if "%commands%"=="2" goto newfilewarningNtutorial
 	goto newfilechecktutorial
@@ -586,6 +627,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 if "%commands%"=="?TutorialBack" goto new-file-tutorial
 if "%commands%"=="?tutorialBack" goto new-file-tutorial
 
@@ -612,6 +655,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 	goto createdscripttutorial
 	
 : loadtutorial
@@ -641,6 +686,8 @@ if "%loadoption%"=="?Notepad" goto Notepad
 if "%loadoption%"=="?notepad" goto Notepad
 if "%loadoption%"=="?Tutorial" goto Tutorial
 if "%loadoption%"=="?tutorial" goto Tutorial
+if "%loadoption%"=="?Tipsearch" goto Tipsearch
+if "%loadoption%"=="?tipsearch" goto Tipsearch
 if "%loadoption%"=="1" goto personalloadtutorial
 goto loadtutorial
 
@@ -670,6 +717,8 @@ if "%filenameload%"=="?Export" goto export
 if "%filenameload%"=="?export" goto export
 if "%filenameload%"=="?Tutorial" goto Tutorial
 if "%filenameload%"=="?tutorial" goto Tutorial
+if "%filenameload%"=="?Tipsearch" goto Tipsearch
+if "%filenameload%"=="?tipsearch" goto Tipsearch
 set scriptPath=%Tutorial%\%filenameload%.bat
 goto check-fileloadtutorial
 
@@ -680,7 +729,7 @@ if exist "%scriptPath%" (
 	powershell write-host -back darkyellow -fore white "3: This is your script workspace."
 	powershell write-host -back darkyellow -fore white "Every script should start with '@echo off.'"
 	powershell write-host -back darkyellow -fore white "This is because it hides the directory and makes it look nice."
-	powershell write-host -back red -fore white "Write '@echo off'"
+	powershell write-host -back red -fore white "Write: '@echo off'"
 	powershell write-host -fore white  
 	powershell write-host -back blue -fore white "Commands can still be used. Script:"
     for /f "usebackq delims=" %%a in ("%scriptPath%") do (
@@ -709,6 +758,9 @@ if "%code%"=="?export" goto export
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="@echo off" goto batchscripttutorial2
+if "%code%"=="echo off" goto batchscripttutorial2
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 goto check-fileloadtutorial
 
 : check-fileloadtutorial2
@@ -719,7 +771,7 @@ if exist "%scriptPath%" (
 	powershell write-host -back darkyellow -fore white "You can see your script has updated."
 	powershell write-host -back darkyellow -fore white "Now lets 'title' your script."
 	powershell write-host -back darkyellow -fore white "'Title' means a word you choose shows up on the top of CMD 'prompt' like on this app it is Cheese Scripting."
-	powershell write-host -back red -fore white "Write 'title' Tutorial"
+	powershell write-host -back red -fore white "Write: 'title' Tutorial"
 	powershell write-host -fore white  
 	powershell write-host -back blue -fore white "Commands can still be used. Script:"
     for /f "usebackq delims=" %%a in ("%scriptPath%") do (
@@ -751,6 +803,8 @@ if "%code%"=="?Export" goto export
 if "%code%"=="?export" goto export
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="title Tutorial" goto batchscripttutorial4
 goto check-fileloadtutorial2
 
@@ -774,7 +828,7 @@ if exist "%scriptPath%" (
 	echo 07: White
 	echo 08: Gray
 	echo 09: Light Blue
-	powershell write-host -back red -fore white "Write 'color' '##'"
+	powershell write-host -back red -fore white "Write: 'color' '##'"
 	powershell write-host -back red -fore white "Example: 'color' 02"
 	powershell write-host -fore white  
 	powershell write-host -back blue -fore white "Commands can still be used. Script:"
@@ -802,6 +856,8 @@ if "%code%"=="?Export" goto export
 if "%code%"=="?export" goto export
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="color 00" goto batchscripttutorial6
 if "%code%"=="color 01" goto batchscripttutorial6
 if "%code%"=="color 02" goto batchscripttutorial6
@@ -853,6 +909,8 @@ if "%code%"=="?Export" goto export
 if "%code%"=="?export" goto export
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="cls" goto batchscripttutorial8
 goto check-fileloadtutorial4
 
@@ -896,10 +954,16 @@ if "%code%"=="?Export" goto export
 if "%code%"=="?export" goto export
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="echo hello world" goto batchscripttutorial10
 if "%code%"=="echo Hello World" goto batchscripttutorial10
 if "%code%"=="echo Hello world" goto batchscripttutorial10
 if "%code%"=="echo hello World" goto batchscripttutorial10
+if "%code%"=="@echo hello world" goto batchscripttutorial10
+if "%code%"=="@echo Hello World" goto batchscripttutorial10
+if "%code%"=="@echo Hello world" goto batchscripttutorial10
+if "%code%"=="@echo hello World" goto batchscripttutorial10
 goto check-fileloadtutorial5
 
 : batchscripttutorial10
@@ -940,6 +1004,8 @@ if "%code%"=="?Export" goto export
 if "%code%"=="?export" goto export
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="pause" goto batchscripttutorial12
 goto check-fileloadtutorial6
 
@@ -982,6 +1048,8 @@ if "%code%"=="?Notepad" goto Notepadopentutorial
 if "%code%"=="?notepad" goto Notepadopentutorial
 if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
+if "%code%"=="?Tipsearch" goto Tipsearch
+if "%code%"=="?tipsearch" goto Tipsearch
 goto check-fileloadtutorial7
 
 : filedoesntexisttutorial
@@ -1005,6 +1073,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 goto filedoesntexisttutorial
 
 
@@ -1044,6 +1114,8 @@ if "%exportfile%"=="?Notepad" goto Notepad
 if "%exportfile%"=="?notepad" goto Notepad
 if "%exportfile%"=="?Tutorial" goto Tutorial
 if "%exportfile%"=="?tutorial" goto Tutorial
+if "%exportfile%"=="?Tipsearch" goto Tipsearch
+if "%exportfile%"=="?tipsearch" goto Tipsearch
 
 if exist "%scriptPath%" (
 	goto exporttutorial2
@@ -1080,6 +1152,8 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 goto help
 
 : filedoesntexisttutorial2
@@ -1103,10 +1177,515 @@ if "%commands%"=="?Notepad" goto Notepad
 if "%commands%"=="?notepad" goto Notepad
 if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
 if "%commands%"=="?Tutorialback" goto exporttutorial
 if "%commands%"=="?tutorialback" goto exporttutorial
 goto filedoesntexisttutorial2
 
+: Tipsearch
+color 07
+setlocal enabledelayedexpansion
+set tips[0]=Option
+set tips[1]=User Input
+set tips[2]=Start
+set tips[3]=Echo
+set tips[4]=Exists
+set tips[5]=Delay
+set tips[6]=Timeout
+set tips[7]=Call
+set tips[8]=Read
+set tips[9]=URL
+set tips[10]=Links
+set tips[11]=Echo off
+set tips[12]=Label
+
+set count=11
+
+set /a index=%random% %% count
+cls
+powershell write-host -back green -fore white Search for tips.
+powershell write-host -back red -fore white Example: '!tips[%index%]!'
+powershell write-host -back blue -fore white ?Help
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+
+set "query_upper=%search%"
+for %%A in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (
+    set "query_upper=!query_upper:%%A=%%A!"
+)
+
+echo Debug: Uppercase result is "%query_upper%"
+
+: search1
+if /I "%query_upper%"=="URL" (
+    goto URL
+) else (
+    echo Searching...
+)
+: search2
+if /I "%query_upper%"=="LINKS" (
+    goto URL
+) else (
+    echo Searching...
+)
+: search3
+if /I "%query_upper%"=="READ" (
+    goto READ
+) else (
+    echo Searching...
+)
+: search4
+if /I "%query_upper%"=="CALL" (
+    goto CALL
+) else (
+    echo Searching...
+)
+: search5
+if /I "%query_upper%"=="TIMEOUT" (
+    goto TIMEOUT
+) else (
+    echo Searching...
+)
+: search6
+if /I "%query_upper%"=="DELAY" (
+    goto TIMEOUT
+) else (
+    echo Searching...
+)
+: search7
+if /I "%query_upper%"=="EXISTS" (
+    goto EXISTS
+) else (
+    echo Searching...
+)
+: search8
+if /I "%query_upper%"=="@ECHO OFF" (
+    goto ECHOOFF
+) else (
+    echo Searching...
+)
+: search9
+if /I "%query_upper%"=="ECHO OFF" (
+    goto ECHOOFF
+) else (
+    echo Searching...
+)
+: search10
+if /I "%query_upper%"=="ECHO" (
+    goto ECHO
+) else (
+    echo Searching...
+)
+: search11
+if /I "%query_upper%"=="@ECHO" (
+    goto ECHO
+) else (
+    echo Searching...
+)
+: search12
+if /I "%query_upper%"=="START" (
+    goto STARTQUERYQUESTION
+) else (
+    echo Searching...
+)
+: search13
+if /I "%query_upper%"=="USER INPUT" (
+    goto OPTIONSQUERYQUESTION
+) else (
+    echo Searching...
+)
+: search14
+if /I "%query_upper%"=="OPTION" (
+    goto OPTIONSQUERYQUESTION
+) else (
+    echo Searching...
+)
+: search14
+if /I "%query_upper%"=="LABEL" (
+    goto LABELQUERYQUESTION
+) else (
+    echo Failed Search...
+)
+ goto failedtipsearch
+
+
+:URL
+cls
+powershell write-host -back green -fore white Answers for %search%.
+powershell write-host -back blue -fore white ?Help
+
+echo You can launch links through the "Start" command.
+echo Lots of batch files use Links/URL's like this one.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'start' https://%USERNAME%.'com'/
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:READ
+cls
+powershell write-host -back green -fore white Answers for %search%.
+powershell write-host -back blue -fore white ?Help
+
+echo You can read files and folders through this command.
+echo Lots of batch files use this command like this one.
+echo How to use it?
+echo Examples:
+powershell write-host -back darkyellow -fore white File:
+powershell write-host -back red -fore white 'for' /f "usebackq delims=" '%%%%a' 'in' '(%USERNAME%.bat)' 'do' '('
+powershell write-host -back red -fore white        'echo' '%%%%a'
+powershell write-host -back red -fore white    ')'
+powershell write-host -back darkyellow -fore white Folder:
+powershell write-host -back red -fore white 'for' '%%%%f' 'in' '(%USERPROFILE%*)' 'do' '('
+powershell write-host -back red -fore white	'echo' '%%%%~nxf'
+powershell write-host -back red -fore white ')'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:CALL
+cls
+powershell write-host -back green -fore white Answers for %search%
+powershell write-host -back blue -fore white ?Help
+
+echo You can call other files through the call command.
+echo This is a very important command.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'call' '%USERNAME%.bat'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:TIMEOUT
+cls
+powershell write-host -back green -fore white Answers for %search%
+powershell write-host -back blue -fore white ?Help
+
+echo You can cooldown/wait/timeout with this command.
+echo This is a useful command.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white timeout /t 5
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:EXISTS
+cls
+powershell write-host -back green -fore white Answers for %search%
+powershell write-host -back blue -fore white ?Help
+
+echo You can check if a folder/file exists with this command.
+echo This is a very useful command used in batch and Cheese Scripting.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'if' 'exist' '%USERPROFILE%' '('
+powershell write-host -back red -fore white 	'goto' exists
+powershell write-host -back red -fore white ')'else '('
+powershell write-host -back red -fore white 	'goto' doesntexist
+powershell write-host -back red -fore white ')'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:ECHOOFF
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to clear any messy text.
+echo Used at the start of almost every script.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white '@echo' off
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:ECHO
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to say something.
+echo What your reading right now is using echo.
+echo Echo is used in almost every script.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'echo' hello world!
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:STARTQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to start a program of file.
+echo Start is similar to call or starting URL's.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'start' cmd
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:OPTIONSQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to ask questions or set variables manually.
+echo User Input is very common.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'set' /p option=Write here:
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:LABELQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to set areas/regions around your batch.
+echo Labels are very common, infact most scripts start with one.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white : 'Start'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto Tipsearch
+
+:failedtipsearch
+cls
+powershell write-host -back red -fore white We couldnt find any answers 'for' '%search%'
+powershell write-host -back blue -fore white ?Help
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+goto failedtipsearch
+
+
+
+endlocal
 
 : crash
 exit
