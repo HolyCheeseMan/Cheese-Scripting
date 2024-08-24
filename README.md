@@ -21,5 +21,10 @@ Commands (will be updated in the future):
 
 ?Tutorial - Advanced comprehensive beginners tutorial to batch.
 
+?Tipsearch - Search for coding tips.
+
+
+
+
 
 MORE TO BE ADDED!
