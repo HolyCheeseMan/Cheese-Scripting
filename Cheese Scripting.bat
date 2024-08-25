@@ -1,4 +1,4 @@
-: installproccessscript
+: startscriptinstall
 @echo off
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\"
@@ -17,22 +17,33 @@ set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseSc
 @echo     } elseif ($trimmedLine -ilike 'title*') {>>%processscriptfile%
 @echo         Write-Host $trimmedLine -ForegroundColor DarkBlue>>%processscriptfile%
 @echo     } elseif ($trimmedLine -ilike 'echo*' -or $trimmedLine -ilike '@echo*') {>>%processscriptfile%
-@echo         if ($trimmedLine -like '*:*') {>>%processscriptfile%
-@echo             Write-Host $trimmedLine -ForegroundColor DarkRed -BackgroundColor Yellow>>%processscriptfile%
-@echo         } else {>>%processscriptfile%
-@echo             Write-Host $trimmedLine -ForegroundColor DarkGreen>>%processscriptfile%
-@echo         }>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor DarkGreen>>%processscriptfile%
 @echo     } elseif ($trimmedLine -ilike 'set*') {>>%processscriptfile%
 @echo         Write-Host $trimmedLine -ForegroundColor Blue>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'del*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor red>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'mkdir*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor darkyellow>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'dir*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor darkyellow>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'color*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor green>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'pause*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor yellow>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'exit*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor white -BackgroundColor DarkRed>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'goto*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor cyan>>%processscriptfile%
 @echo	  } elseif ($trimmedLine -ilike 'if*') {>>%processscriptfile%
 @echo         Write-Host $trimmedLine -ForegroundColor white -BackgroundColor darkblue>>%processscriptfile%
-@echo     } elseif ($trimmedLine -like '*:*') {>>%processscriptfile%
+@echo     } elseif ($trimmedLine -match '^\s*:$') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor DarkRed -BackgroundColor Yellow>>%processscriptfile%
+@echo     } elseif ($trimmedLine.StartsWith(':')) {>>%processscriptfile%
 @echo         Write-Host $trimmedLine -ForegroundColor DarkRed -BackgroundColor Yellow>>%processscriptfile%
 @echo     } else {>>%processscriptfile%
 @echo         Write-Host $trimmedLine>>%processscriptfile%
 @echo     }>>%processscriptfile%
 @echo }>>%processscriptfile%
-
 
 
 goto menu
@@ -64,7 +75,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.7 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.8 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -1316,8 +1327,10 @@ set tips[10]=Links
 set tips[11]=Echo off
 set tips[12]=Label
 set tips[13]=Color
+set tips[14]=Dir
+set tips[15]=mkdir
 
-set count=13
+set count=15
 
 set /a index=%random% %% count
 cls
@@ -1460,6 +1473,20 @@ if /I "%query_upper%"=="COLOR" (
 )
 
 : search18
+if /I "%query_upper%"=="DIR" (
+    goto DIRQUERYQUESTION
+) else (
+    echo Searching...
+)
+
+: search19
+if /I "%query_upper%"=="MKDIR" (
+    goto MKDIRQUERYQUESTION
+) else (
+    echo Searching...
+)
+
+: search20
 if /I "%query_upper%"=="LABEL" (
     goto LABELQUERYQUESTION
 ) else (
@@ -1864,6 +1891,74 @@ if "%search%"=="?Folder" goto OpenFolder
 if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
+:DIRQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to list all the files in a directory.
+echo This file is useful.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'dir' '%USERPROFILE%'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
+goto Tipsearch
+
+:MKDIRQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to create a directory.
+echo This file is very useful used in this and many other batch files.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'mkdir' '%USERPROFILE%\appdata\roaming\%USERNAME%-App\'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
+goto Tipsearch
+
 :failedtipsearch
 cls
 powershell write-host -back red -fore white We couldnt find any answers 'for' '%search%'
@@ -1923,9 +2018,13 @@ goto OpenFolder
 endlocal
 
 : crash
+cls
 powershell write-host -back darkred -fore white "Error has occured when loading the script"
-powershell write-host -back darkred -fore white "Please restart the program."
+powershell write-host -back darkred -fore white "Please restart the program manually or restart by using ?Restart"
 powershell write-host -fore white  
-powershell write-host -back blue -fore white "'If' problem continues than reinstall or message on Github."
-pause
-exit
+powershell write-host -back darkblue -fore white "'If' problem continues than reinstall or message on Github."
+powershell write-host -back blue -fore white "?Restart"
+set /p commands= 
+if "%commands%"=="?Restart" goto startscriptinstall
+if "%commands%"=="?restart" goto startscriptinstall
+goto crash
