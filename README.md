@@ -23,7 +23,7 @@ Commands (will be updated in the future):
 
 ?Tipsearch - Search for coding tips.
 
-
+?Folder - Opens Plugins folder.
 
 
 
