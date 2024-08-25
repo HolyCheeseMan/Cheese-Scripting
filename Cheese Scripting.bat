@@ -75,7 +75,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.8 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.9 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -560,6 +560,7 @@ mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutoria
 color 07
 cls
 powershell write-host -back darkyellow -fore white Welcome to a comprehensive beginners guide to Batch.
+powershell write-host -back darkyellow -fore white Be warned this may be outdated 'in' the future like the Colored-Code-Text 'in' the main system.
 powershell write-host -back blue -fore white Write anything to continue.
 set /p commands= 
 if "%commands%"=="?Help" goto help
@@ -802,6 +803,7 @@ for %%f in (%Tutorial%*) do (
 )
 powershell write-host -fore white  
 powershell write-host -back darkyellow -fore white Pick the file you just made.
+powershell write-host -back darkyellow -fore white "You 'do' 'not' write .bat at the end."
 powershell write-host -back green -fore white Write file name in project folder.
 set /p filenameload=
 if "%filenameload%"=="?Help" goto help
@@ -842,9 +844,37 @@ if exist "%scriptPath%" (
     )
 	goto batchscripttutorial
 ) else (
-	goto filedoesntexisttutorial
+	goto filedoesntexisttutorialload
 )
 
+: filedoesntexisttutorialload
+cls
+powershell write-host -back red -fore white "File doesnt exist."
+powershell write-host -back blue -fore white Write ?Tutorialback
+set /p commands= 
+if "%commands%"=="?Help" goto help
+if "%commands%"=="?Menu" goto menu
+if "%commands%"=="?help" goto help
+if "%commands%"=="?menu" goto menu
+if "%commands%"=="?Load" goto load
+if "%commands%"=="?load" goto load
+if "%commands%"=="?Github" goto Github
+if "%commands%"=="?github" goto Github
+if "%commands%"=="?new" goto new-file
+if "%commands%"=="?New" goto new-file
+if "%commands%"=="?Export" goto export
+if "%commands%"=="?export" goto export
+if "%commands%"=="?Notepad" goto Notepad
+if "%commands%"=="?notepad" goto Notepad
+if "%commands%"=="?Tutorial" goto Tutorial
+if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tutorialback" goto personalloadtutorial
+if "%commands%"=="?tutorialback" goto personalloadtutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
+goto filedoesntexisttutorialload
 
 : batchscripttutorial
 set /p code=
@@ -878,7 +908,7 @@ if exist "%scriptPath%" (
 	powershell write-host -back darkyellow -fore white "You can see your script has updated."
 	powershell write-host -back darkyellow -fore white "Now lets 'title' your script."
 	powershell write-host -back darkyellow -fore white "'Title' means a word you choose shows up on the top of CMD 'prompt' like on this app it is Cheese Scripting."
-	powershell write-host -back red -fore white "Write: 'title' Tutorial"
+	powershell write-host -back red -fore white "Write: 'title' Any Text You Want"
 	powershell write-host -fore white  
 	powershell write-host -back blue -fore white "Commands can still be used. Script:"
     for /f "usebackq delims=" %%a in ("%scriptPath%") do (
@@ -914,7 +944,7 @@ if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="?Folder" goto OpenFolder
 if "%code%"=="?folder" goto OpenFolder
-if "%code%"=="title Tutorial" goto batchscripttutorial4
+if "%code:~0,5%"=="title" goto batchscripttutorial4
 goto check-fileloadtutorial2
 
 : batchscripttutorial4
@@ -1040,7 +1070,7 @@ if exist "%scriptPath%" (
 	powershell write-host -fore white 
 	powershell write-host -back darkyellow -fore white "'Echo' in batch is how you make the cmd prompt say anything."
 	powershell write-host -back darkyellow -fore white "All of the stuff you see now is using 'Echo'"
-	powershell write-host -back red -fore white "Write 'echo' Hello World"
+	powershell write-host -back red -fore white "Write: 'echo' Any Text You Want"
 	powershell write-host -fore white  
 	powershell write-host -back blue -fore white "Commands can still be used. Script:"
     for /f "usebackq delims=" %%a in ("%scriptPath%") do (
@@ -1071,14 +1101,8 @@ if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
 if "%code%"=="?Folder" goto OpenFolder
 if "%code%"=="?folder" goto OpenFolder
-if "%code%"=="echo hello world" goto batchscripttutorial10
-if "%code%"=="echo Hello World" goto batchscripttutorial10
-if "%code%"=="echo Hello world" goto batchscripttutorial10
-if "%code%"=="echo hello World" goto batchscripttutorial10
-if "%code%"=="@echo hello world" goto batchscripttutorial10
-if "%code%"=="@echo Hello World" goto batchscripttutorial10
-if "%code%"=="@echo Hello world" goto batchscripttutorial10
-if "%code%"=="@echo hello World" goto batchscripttutorial10
+if "%code:~0,5%"=="echo" goto batchscripttutorial10
+if "%code:~0,5%"=="@echo" goto batchscripttutorial10
 goto check-fileloadtutorial5
 
 : batchscripttutorial10
@@ -1243,8 +1267,37 @@ if "%exportfile%"=="?folder" goto OpenFolder
 if exist "%scriptPath%" (
 	goto exporttutorial2
 ) else (
-	goto filedoesntexisttutorial2
+	goto filedoesntexisttutorialexport
 )
+
+: filedoesntexisttutorialexport
+cls
+powershell write-host -back red -fore white "File doesnt exist."
+powershell write-host -back blue -fore white Write ?Tutorialback
+set /p commands= 
+if "%commands%"=="?Help" goto help
+if "%commands%"=="?Menu" goto menu
+if "%commands%"=="?help" goto help
+if "%commands%"=="?menu" goto menu
+if "%commands%"=="?Load" goto load
+if "%commands%"=="?load" goto load
+if "%commands%"=="?Github" goto Github
+if "%commands%"=="?github" goto Github
+if "%commands%"=="?new" goto new-file
+if "%commands%"=="?New" goto new-file
+if "%commands%"=="?Export" goto export
+if "%commands%"=="?export" goto export
+if "%commands%"=="?Notepad" goto Notepad
+if "%commands%"=="?notepad" goto Notepad
+if "%commands%"=="?Tutorial" goto Tutorial
+if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tutorialback" goto exporttutorial
+if "%commands%"=="?tutorialback" goto exporttutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
+goto filedoesntexisttutorialexport
 
 
 goto crash
@@ -1252,6 +1305,8 @@ goto crash
 : exporttutorial2
 cls
 xcopy "%scriptPath%" "C:\Users\%USERNAME%\downloads\"
+start "" "C:\Users\%USERNAME%\downloads\"
+del "%scriptPath%"
 cls
 powershell write-host -back darkyellow -fore white Tutorial Complete.
 powershell write-host -back darkyellow -fore white Try out your script 'in' your downloads.
@@ -1280,35 +1335,6 @@ if "%commands%"=="?tipsearch" goto Tipsearch
 if "%commands%"=="?Folder" goto OpenFolder
 if "%commands%"=="?folder" goto OpenFolder
 goto help
-
-: filedoesntexisttutorial2
-cls
-powershell write-host -back red -fore white File Doesnt Exist
-powershell write-host -back blue -fore white ?Help OR ?Tutorialback
-set /p commands= 
-if "%commands%"=="?Help" goto help
-if "%commands%"=="?Menu" goto menu
-if "%commands%"=="?help" goto help
-if "%commands%"=="?menu" goto menu
-if "%commands%"=="?Load" goto load
-if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
-if "%commands%"=="?new" goto new-file
-if "%commands%"=="?New" goto new-file
-if "%commands%"=="?Export" goto export
-if "%commands%"=="?export" goto export
-if "%commands%"=="?Notepad" goto Notepad
-if "%commands%"=="?notepad" goto Notepad
-if "%commands%"=="?Tutorial" goto Tutorial
-if "%commands%"=="?tutorial" goto Tutorial
-if "%commands%"=="?Tipsearch" goto Tipsearch
-if "%commands%"=="?tipsearch" goto Tipsearch
-if "%commands%"=="?Folder" goto OpenFolder
-if "%commands%"=="?folder" goto OpenFolder
-if "%commands%"=="?Tutorialback" goto exporttutorial
-if "%commands%"=="?tutorialback" goto exporttutorial
-goto filedoesntexisttutorial2
 
 : Tipsearch
 color 07
