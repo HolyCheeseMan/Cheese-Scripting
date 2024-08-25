@@ -64,7 +64,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.6 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.7 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -395,6 +395,15 @@ if "%scriptPath%"=="?Folder" goto OpenFolder
 if "%scriptPath%"=="?folder" goto OpenFolder
 : check-fileload
 cls
+
+if exist "%processscriptfile%" (
+	goto exists-fileload
+) else (
+	goto crash
+)
+
+: exists-fileload
+
 if exist "%scriptPath%" (
     cls
 	powershell write-host -back blue -fore white "Commands can still be used like ?Export or ?Notepad. Script:"
@@ -1914,4 +1923,9 @@ goto OpenFolder
 endlocal
 
 : crash
+powershell write-host -back darkred -fore white "Error has occured when loading the script"
+powershell write-host -back darkred -fore white "Please restart the program."
+powershell write-host -fore white  
+powershell write-host -back blue -fore white "'If' problem continues than reinstall or message on Github."
+pause
 exit
