@@ -22,12 +22,17 @@ set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseSc
 @echo         } else {>>%processscriptfile%
 @echo             Write-Host $trimmedLine -ForegroundColor DarkGreen>>%processscriptfile%
 @echo         }>>%processscriptfile%
+@echo     } elseif ($trimmedLine -ilike 'set*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor Blue>>%processscriptfile%
+@echo	  } elseif ($trimmedLine -ilike 'if*') {>>%processscriptfile%
+@echo         Write-Host $trimmedLine -ForegroundColor white -BackgroundColor darkblue>>%processscriptfile%
 @echo     } elseif ($trimmedLine -like '*:*') {>>%processscriptfile%
 @echo         Write-Host $trimmedLine -ForegroundColor DarkRed -BackgroundColor Yellow>>%processscriptfile%
 @echo     } else {>>%processscriptfile%
 @echo         Write-Host $trimmedLine>>%processscriptfile%
 @echo     }>>%processscriptfile%
 @echo }>>%processscriptfile%
+
 
 
 goto menu
@@ -59,7 +64,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.0.5 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.0.6 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -81,6 +86,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 
 goto menu
 
@@ -98,6 +105,7 @@ powershell write-host -fore white ?Load - Loads a script.
 powershell write-host -fore white ?Notepad - Opens notepad to current script.
 powershell write-host -back darkyellow -fore white ?Tutorial - Advanced comprehensive beginners tutorial to batch.
 powershell write-host -back darkred -fore white ?Tipsearch - Search for coding tips.
+powershell write-host -fore white ?Folder - Opens Plugins folder.
 set /p commands= 
 if "%commands%"=="?Help" goto help
 if "%commands%"=="?Menu" goto menu
@@ -117,6 +125,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 
 goto help
 
@@ -145,6 +155,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 
 : Notepad
 cls
@@ -169,6 +181,8 @@ if "%filename%"=="?Tutorial" goto Tutorial
 if "%filename%"=="?tutorial" goto Tutorial
 if "%filename%"=="?Tipsearch" goto Tipsearch
 if "%filename%"=="?tipsearch" goto Tipsearch
+if "%filename%"=="?Folder" goto OpenFolder
+if "%filename%"=="?folder" goto OpenFolder
 goto Notepad
 
 : new-file
@@ -195,6 +209,8 @@ if "%filename%"=="?Tutorial" goto Tutorial
 if "%filename%"=="?tutorial" goto Tutorial
 if "%filename%"=="?Tipsearch" goto Tipsearch
 if "%filename%"=="?tipsearch" goto Tipsearch
+if "%filename%"=="?Folder" goto OpenFolder
+if "%filename%"=="?folder" goto OpenFolder
 set scriptPath=%Projects%\%filename%.bat
 goto newfilecheck
 : newfilecheck
@@ -228,6 +244,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 	if "%commands%"=="1" goto createdscript
 	if "%commands%"=="2" goto newfilewarningN
 	goto newfilecheck
@@ -255,6 +273,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 
 : createdscript
 	cls
@@ -282,6 +302,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 	goto createdscript
 
 : load
@@ -310,6 +332,8 @@ if "%loadoption%"=="?Tutorial" goto Tutorial
 if "%loadoption%"=="?tutorial" goto Tutorial
 if "%loadoption%"=="?Tipsearch" goto Tipsearch
 if "%loadoption%"=="?tipsearch" goto Tipsearch
+if "%loadoption%"=="?Folder" goto OpenFolder
+if "%loadoption%"=="?folder" goto OpenFolder
 if "%loadoption%"=="1" goto personalload
 if "%loadoption%"=="2" goto otherload
 goto load
@@ -341,6 +365,8 @@ if "%filenameload%"=="?Tutorial" goto Tutorial
 if "%filenameload%"=="?tutorial" goto Tutorial
 if "%filenameload%"=="?Tipsearch" goto Tipsearch
 if "%filenameload%"=="?tipsearch" goto Tipsearch
+if "%filenameload%"=="?Folder" goto OpenFolder
+if "%filenameload%"=="?folder" goto OpenFolder
 set scriptPath=%Projects%\%filenameload%.bat
 goto check-fileload
 : otherload
@@ -365,6 +391,8 @@ if "%scriptPath%"=="?Tutorial" goto Tutorial
 if "%scriptPath%"=="?tutorial" goto Tutorial
 if "%scriptPath%"=="?Tipsearch" goto Tipsearch
 if "%scriptPath%"=="?tipsearch" goto Tipsearch
+if "%scriptPath%"=="?Folder" goto OpenFolder
+if "%scriptPath%"=="?folder" goto OpenFolder
 : check-fileload
 cls
 if exist "%scriptPath%" (
@@ -398,6 +426,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 @echo %code%>>"%scriptPath%"
 goto check-fileload
 
@@ -436,6 +466,8 @@ if "%exportfile%"=="?Tutorial" goto Tutorial
 if "%exportfile%"=="?tutorial" goto Tutorial
 if "%exportfile%"=="?Tipsearch" goto Tipsearch
 if "%exportfile%"=="?tipsearch" goto Tipsearch
+if "%exportfile%"=="?Folder" goto OpenFolder
+if "%exportfile%"=="?folder" goto OpenFolder
 
 if exist "%scriptPath%" (
 	goto export2
@@ -471,6 +503,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 goto help
 
 : filedoesntexist
@@ -496,6 +530,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 goto filedoesntexist
 
 
@@ -524,6 +560,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 cls
 powershell write-host -back green -fore white First of all, this is a advanced scripting app for coding batch.
 powershell write-host -back darkyellow -fore white So thank you for using it for this guide.
@@ -547,6 +585,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 cls
 : Tutorial2
 powershell write-host -back green -fore white 1: Commands in this app:
@@ -572,6 +612,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 cls
 goto Tutorial2
 
@@ -600,6 +642,8 @@ if "%filename%"=="?Tutorial" goto Tutorial
 if "%filename%"=="?tutorial" goto Tutorial
 if "%filename%"=="?Tipsearch" goto Tipsearch
 if "%filename%"=="?tipsearch" goto Tipsearch
+if "%filename%"=="?Folder" goto OpenFolder
+if "%filename%"=="?folder" goto OpenFolder
 set scriptPath=%Tutorial%\%filename%.bat
 goto newfilechecktutorial
 : newfilechecktutorial
@@ -633,6 +677,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 	if "%commands%"=="1" goto createdscripttutorial
 	if "%commands%"=="2" goto newfilewarningNtutorial
 	goto newfilechecktutorial
@@ -660,6 +706,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 if "%commands%"=="?TutorialBack" goto new-file-tutorial
 if "%commands%"=="?tutorialBack" goto new-file-tutorial
 
@@ -688,6 +736,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 	goto createdscripttutorial
 	
 : loadtutorial
@@ -719,6 +769,8 @@ if "%loadoption%"=="?Tutorial" goto Tutorial
 if "%loadoption%"=="?tutorial" goto Tutorial
 if "%loadoption%"=="?Tipsearch" goto Tipsearch
 if "%loadoption%"=="?tipsearch" goto Tipsearch
+if "%loadoption%"=="?Folder" goto OpenFolder
+if "%loadoption%"=="?folder" goto OpenFolder
 if "%loadoption%"=="1" goto personalloadtutorial
 goto loadtutorial
 
@@ -750,6 +802,8 @@ if "%filenameload%"=="?Tutorial" goto Tutorial
 if "%filenameload%"=="?tutorial" goto Tutorial
 if "%filenameload%"=="?Tipsearch" goto Tipsearch
 if "%filenameload%"=="?tipsearch" goto Tipsearch
+if "%filenameload%"=="?Folder" goto OpenFolder
+if "%filenameload%"=="?folder" goto OpenFolder
 set scriptPath=%Tutorial%\%filenameload%.bat
 goto check-fileloadtutorial
 
@@ -792,6 +846,8 @@ if "%code%"=="@echo off" goto batchscripttutorial2
 if "%code%"=="echo off" goto batchscripttutorial2
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 goto check-fileloadtutorial
 
 : check-fileloadtutorial2
@@ -836,6 +892,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 if "%code%"=="title Tutorial" goto batchscripttutorial4
 goto check-fileloadtutorial2
 
@@ -889,6 +947,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 if "%code%"=="color 00" goto batchscripttutorial6
 if "%code%"=="color 01" goto batchscripttutorial6
 if "%code%"=="color 02" goto batchscripttutorial6
@@ -942,6 +1002,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 if "%code%"=="cls" goto batchscripttutorial8
 goto check-fileloadtutorial4
 
@@ -987,6 +1049,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 if "%code%"=="echo hello world" goto batchscripttutorial10
 if "%code%"=="echo Hello World" goto batchscripttutorial10
 if "%code%"=="echo Hello world" goto batchscripttutorial10
@@ -1037,6 +1101,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 if "%code%"=="pause" goto batchscripttutorial12
 goto check-fileloadtutorial6
 
@@ -1081,6 +1147,8 @@ if "%code%"=="?Tutorial" goto Tutorial
 if "%code%"=="?tutorial" goto Tutorial
 if "%code%"=="?Tipsearch" goto Tipsearch
 if "%code%"=="?tipsearch" goto Tipsearch
+if "%code%"=="?Folder" goto OpenFolder
+if "%code%"=="?folder" goto OpenFolder
 goto check-fileloadtutorial7
 
 : filedoesntexisttutorial
@@ -1106,6 +1174,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 goto filedoesntexisttutorial
 
 
@@ -1147,6 +1217,8 @@ if "%exportfile%"=="?Tutorial" goto Tutorial
 if "%exportfile%"=="?tutorial" goto Tutorial
 if "%exportfile%"=="?Tipsearch" goto Tipsearch
 if "%exportfile%"=="?tipsearch" goto Tipsearch
+if "%exportfile%"=="?Folder" goto OpenFolder
+if "%exportfile%"=="?folder" goto OpenFolder
 
 if exist "%scriptPath%" (
 	goto exporttutorial2
@@ -1185,6 +1257,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 goto help
 
 : filedoesntexisttutorial2
@@ -1210,6 +1284,8 @@ if "%commands%"=="?Tutorial" goto Tutorial
 if "%commands%"=="?tutorial" goto Tutorial
 if "%commands%"=="?Tipsearch" goto Tipsearch
 if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
 if "%commands%"=="?Tutorialback" goto exporttutorial
 if "%commands%"=="?tutorialback" goto exporttutorial
 goto filedoesntexisttutorial2
@@ -1230,8 +1306,9 @@ set tips[9]=URL
 set tips[10]=Links
 set tips[11]=Echo off
 set tips[12]=Label
+set tips[13]=Color
 
-set count=11
+set count=13
 
 set /a index=%random% %% count
 cls
@@ -1257,6 +1334,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 
 set "query_upper=%search%"
 for %%A in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (
@@ -1358,6 +1437,20 @@ if /I "%query_upper%"=="EXIST" (
 )
 
 : search16
+if /I "%query_upper%"=="COLOUR" (
+    goto COLORQUERYQUESTION
+) else (
+    echo Searching...
+)
+
+: search17
+if /I "%query_upper%"=="COLOR" (
+    goto COLORQUERYQUESTION
+) else (
+    echo Searching...
+)
+
+: search18
 if /I "%query_upper%"=="LABEL" (
     goto LABELQUERYQUESTION
 ) else (
@@ -1395,6 +1488,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :READ
@@ -1434,6 +1529,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :CALL
@@ -1466,6 +1563,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :TIMEOUT
@@ -1498,6 +1597,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :EXISTS
@@ -1534,6 +1635,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :ECHOOFF
@@ -1566,6 +1669,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :ECHO
@@ -1599,6 +1704,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :STARTQUERYQUESTION
@@ -1631,6 +1738,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :OPTIONSQUERYQUESTION
@@ -1663,6 +1772,8 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :LABELQUERYQUESTION
@@ -1695,6 +1806,53 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
+goto Tipsearch
+
+:COLORQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to customize your batch file with color.
+echo This file uses color and so do many others.
+echo How to use it?
+powershell write-host -back darkyellow -fore white Examples:
+powershell write-host -back red -fore white 'color' '##'
+powershell write-host -back darkyellow -fore white 'Color' Codes:
+powershell write-host -back red -fore white 00: Black
+powershell write-host -back red -fore white 01: Blue
+powershell write-host -back red -fore white 02: Green
+powershell write-host -back red -fore white 03: Aqua
+powershell write-host -back red -fore white 04: Red
+powershell write-host -back red -fore white 05: Purple
+powershell write-host -back red -fore white 06: Yellow
+powershell write-host -back red -fore white 07: White
+powershell write-host -back red -fore white 08: Gray
+powershell write-host -back red -fore white 09: Light Blue
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
 
 :failedtipsearch
@@ -1720,9 +1878,38 @@ if "%search%"=="?Tutorial" goto Tutorial
 if "%search%"=="?tutorial" goto Tutorial
 if "%search%"=="?Tipsearch" goto Tipsearch
 if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
 goto failedtipsearch
 
-
+: OpenFolder
+color 07
+cls
+start "" "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
+powershell write-host -back red -fore white Opening Projects Folder.
+powershell write-host -back blue -fore white ?Help
+set /p commands= 
+if "%commands%"=="?Help" goto help
+if "%commands%"=="?Menu" goto menu
+if "%commands%"=="?help" goto help
+if "%commands%"=="?menu" goto menu
+if "%commands%"=="?Load" goto load
+if "%commands%"=="?load" goto load
+if "%commands%"=="?Github" goto Github
+if "%commands%"=="?github" goto Github
+if "%commands%"=="?new" goto new-file
+if "%commands%"=="?New" goto new-file
+if "%commands%"=="?Export" goto export
+if "%commands%"=="?export" goto export
+if "%commands%"=="?Notepad" goto Notepad
+if "%commands%"=="?notepad" goto Notepad
+if "%commands%"=="?Tutorial" goto Tutorial
+if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
+goto OpenFolder
 
 endlocal
 
