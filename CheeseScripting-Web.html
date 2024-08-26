@@ -20,14 +20,13 @@
             padding: 20px;
             text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
             border-bottom: 2px solid #f4a300;
         }
         header .icon {
-            position: absolute;
-            left: 20px;
             font-size: 5rem;
             color: #f4a300;
         }
@@ -45,23 +44,42 @@
             margin: 0;
             font-size: 1.5rem;
         }
-        .typing-effect {
+        .typing-container {
+            margin-top: 20px;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #f4a300;
+            background-color: #000;
+            border-radius: 5px;
+            position: relative;
+            min-height: 4em;
+            white-space: pre;
+            overflow: hidden;
+            text-align: left;
+            font-size: 1.5rem;
+        }
+        .description {
             background-color: #000;
             color: #f4a300;
             padding: 20px;
             font-family: 'Courier New', Courier, monospace;
             border-radius: 5px;
             margin-top: 20px;
+            margin-left: -150px;
             white-space: pre;
-            overflow: hidden;
-            font-size: 1.2rem;
+            overflow: auto;
+            font-size: 1.4rem;
+            text-align: left;
+            position: relative;
         }
-        .typing-effect .cursor {
+        .description .cursor {
             display: inline-block;
-            width: 0.8em;
-            height: 1em;
+            width: 0.5em;
+            height: 1.2em;
             background-color: #f4a300;
             animation: blink 1s step-start infinite;
+            vertical-align: bottom;
+            margin-left: 0.2em;
         }
         @keyframes blink {
             from, to {
@@ -100,54 +118,79 @@
             <h1>Cheese Scripting</h1>
             <h2>An Advanced Batch Coding Tool For Beginners and Advanced Users.</h2>
             <p>Version 0.1.0 - By Holy Cheese Man</p>
+            <div class="typing-container">
+                <span id="typing-effect"></span>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="typing-effect" id="typing-effect"></div>
-        <a href="https://github.com/HolyCheeseMan/Cheese-Scripting" class="download-button" target="_blank">Download Now!</a>
+        <div class="description">
+            Welcome to Cheese Scripting!
+            --------------------------------
+            An Advanced Batch Coding Tool
+            For Beginners and Advanced Users.
+
+            Version: 0.1.0 - By Holy Cheese Man
+
+            Features:
+            - Advanced Code Editor.
+            - Comprehensive Beginner-Friendly Tutorial.
+            - Search Engine for Coding Tips and Examples.
+            - Exporting feature.
+
+            Commands:
+            ?Github - Opens Cheese Scripter Github.
+            ?Menu - Goes to Menu.
+            ?Help - Shows Commands.
+            ?New - Creates a new project.
+            ?Export - Exports your project to downloads.
+            ?Load - Loads a script.
+            ?Notepad - Opens notepad to current script.
+            ?Tutorial - Advanced comprehensive beginners tutorial to batch.
+            ?Tipsearch - Search for coding tips.
+            ?Folder - Opens Plugins folder.
+            <span class="cursor"></span>
+        </div>
+        <a href="https://github.com/HolyCheeseMan/Cheese-Scripting" class="download-button" target="_blank">Github Download Page</a>
     </div>
 
     <script>
-        const text = `
-Welcome to Cheese Scripting!
---------------------------------
-An Advanced Batch Coding Tool
-For Beginners and Advanced Users.
+        const messages = [
+            "Welcome to Cheese Scripting!",
+            "Best program for all Coders!",
+            "Enjoy Frequently updated features!",
+            "Script smoothly and easily!"
+        ];
 
-Version: 0.1.0 - By Holy Cheese Man
+        let messageIndex = 0;
+        let charIndex = 0;
+        const typingSpeed = 50;
+        const pauseDuration = 2000;
 
-Features:
-- Advanced Code Editor.
-- Comprehensive Beginner-Friendly Tutorial.
-- Search Engine for Coding Tips and Examples.
-- Exporting feature.
-
-Commands:
-?Github - Opens Cheese Scripter Github.
-?Menu - Goes to Menu.
-?Help - Shows Commands.
-?New - Creates a new project.
-?Export - Exports your project to downloads.
-?Load - Loads a script.
-?Notepad - Opens notepad to current script.
-?Tutorial - Advanced comprehensive beginners tutorial to batch.
-?Tipsearch - Search for coding tips.
-?Folder - Opens Plugins folder.
-> `;
-
-        const typingEffectElement = document.getElementById('typing-effect');
-        let index = 0;
-
-        function type() {
-            if (index < text.length) {
-                typingEffectElement.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, 25);
+        function typeMessage() {
+            const typingEffectElement = document.getElementById('typing-effect');
+            typingEffectElement.textContent = '';
+            const currentMessage = messages[messageIndex];
+            function typeNextChar() {
+                if (charIndex < currentMessage.length) {
+                    typingEffectElement.textContent += currentMessage.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeNextChar, typingSpeed);
+                } else {
+                    setTimeout(() => {
+                        messageIndex = (messageIndex + 1) % messages.length;
+                        charIndex = 0;
+                        typeMessage();
+                    }, pauseDuration);
+                }
             }
+            typeNextChar();
         }
 
-        type();
+        window.onload = function() {
+            typeMessage();
+        };
     </script>
 
 </body>
