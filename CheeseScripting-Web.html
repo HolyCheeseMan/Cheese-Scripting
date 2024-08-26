@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Scripting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f4f4f4;
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #000;
+            color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 2px solid #f4a300;
+        }
+        header .icon {
+            position: absolute;
+            left: 20px;
+            font-size: 5rem;
+            color: #f4a300;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding-bottom: 80px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .typing-effect {
+            background-color: #000;
+            color: #f4a300;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre;
+            overflow: hidden;
+            font-size: 1.2rem;
+        }
+        .typing-effect .cursor {
+            display: inline-block;
+            width: 0.8em;
+            height: 1em;
+            background-color: #f4a300;
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            from, to {
+                background-color: transparent;
+            }
+            50% {
+                background-color: #f4a300;
+            }
+        }
+        .download-button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            color: #000;
+            background-color: #f4a300;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #c17b0a;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <i class="fa-solid fa-cheese icon"></i>
+        <div class="container">
+            <h1>Cheese Scripting</h1>
+            <h2>An Advanced Batch Coding Tool For Beginners and Advanced Users.</h2>
+            <p>Version 0.1.0 - By Holy Cheese Man</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="typing-effect" id="typing-effect"></div>
+        <a href="https://github.com/HolyCheeseMan/Cheese-Scripting" class="download-button" target="_blank">Download Now!</a>
+    </div>
+
+    <script>
+        const text = `
+Welcome to Cheese Scripting!
+--------------------------------
+An Advanced Batch Coding Tool
+For Beginners and Advanced Users.
+
+Version: 0.1.0 - By Holy Cheese Man
+
+Features:
+- Advanced Code Editor.
+- Comprehensive Beginner-Friendly Tutorial.
+- Search Engine for Coding Tips and Examples.
+- Exporting feature.
+
+Commands:
+?Github - Opens Cheese Scripter Github.
+?Menu - Goes to Menu.
+?Help - Shows Commands.
+?New - Creates a new project.
+?Export - Exports your project to downloads.
+?Load - Loads a script.
+?Notepad - Opens notepad to current script.
+?Tutorial - Advanced comprehensive beginners tutorial to batch.
+?Tipsearch - Search for coding tips.
+?Folder - Opens Plugins folder.
+> `;
+
+        const typingEffectElement = document.getElementById('typing-effect');
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                typingEffectElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 25);
+            }
+        }
+
+        type();
+    </script>
+
+</body>
+</html>
