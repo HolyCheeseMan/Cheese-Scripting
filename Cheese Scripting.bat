@@ -75,7 +75,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.1.0 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.1.1 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
@@ -1516,7 +1516,28 @@ if /I "%query_upper%"=="MKDIR" (
 if /I "%query_upper%"=="LABEL" (
     goto LABELQUERYQUESTION
 ) else (
-    echo Failed Search...
+    echo Searching...
+)
+
+: search21
+if /I "%query_upper%"=="DEL" (
+    goto DELQUERYQUESTION
+) else (
+    echo Searching...
+)
+
+: search22
+if /I "%query_upper%"=="DELETE" (
+    goto DELQUERYQUESTION
+) else (
+    echo Searching...
+)
+
+: search2
+if /I "%query_upper%"=="REMOVE" (
+    goto DELQUERYQUESTION
+) else (
+    echo Searching...
 )
  goto failedtipsearch
 
@@ -1984,6 +2005,41 @@ if "%search%"=="?tipsearch" goto Tipsearch
 if "%search%"=="?Folder" goto OpenFolder
 if "%search%"=="?folder" goto OpenFolder
 goto Tipsearch
+
+: DELQUERYQUESTION
+cls
+powershell write-host -back green -fore white Answers for '%search%'
+powershell write-host -back blue -fore white ?Help
+
+echo This command is used to delete a file in a directory.
+echo This file is very useful.
+echo How to use it?
+echo Examples:
+powershell write-host -back red -fore white 'del' '%USERPROFILE%\appdata\roaming\%USERNAME%-App.exe'
+
+set /p search= 
+if "%search%"=="?Help" goto help
+if "%search%"=="?Menu" goto menu
+if "%search%"=="?help" goto help
+if "%search%"=="?menu" goto menu
+if "%search%"=="?Load" goto load
+if "%search%"=="?load" goto load
+if "%search%"=="?Github" goto Github
+if "%search%"=="?github" goto Github
+if "%search%"=="?new" goto new-file
+if "%search%"=="?New" goto new-file
+if "%search%"=="?Export" goto export
+if "%search%"=="?export" goto export
+if "%search%"=="?Notepad" goto Notepad
+if "%search%"=="?notepad" goto Notepad
+if "%search%"=="?Tutorial" goto Tutorial
+if "%search%"=="?tutorial" goto Tutorial
+if "%search%"=="?Tipsearch" goto Tipsearch
+if "%search%"=="?tipsearch" goto Tipsearch
+if "%search%"=="?Folder" goto OpenFolder
+if "%search%"=="?folder" goto OpenFolder
+goto Tipsearch
+
 
 :failedtipsearch
 cls
