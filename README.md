@@ -5,7 +5,7 @@ Cheese Scripting uses .bat to run, and has a variety of different commands/tools
 
 Commands (will be updated in the future):
 
-**?Github - Opens Cheese Scripter Github.**
+**?More - Opens other commands.**
 
 **?Menu - Goes to Menu.**
 
