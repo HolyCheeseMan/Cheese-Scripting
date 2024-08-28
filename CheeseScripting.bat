@@ -75,7 +75,7 @@ cls
 :::  \____|_| |_|\___|\___||___/\___| |____/ \___|_|  |_| .__/ \__|_|_| |_|\__, |
 :::                                                     |_|                |___/ 
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-powershell write-host -back red -fore white Version 0.1.1 Holy Cheese Man
+powershell write-host -back red -fore white Version 0.1.2 Holy Cheese Man
 powershell write-host -fore white Press "Enter" or Write:
 powershell write-host -back blue -fore white ?Help
 set /p commands= 
