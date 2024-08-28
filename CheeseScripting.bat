@@ -85,8 +85,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?more" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -107,8 +107,8 @@ color 07
 cls
 powershell write-host -back red -fore white Commands:
 powershell write-host -fore white  
-powershell write-host -fore white ?Github - Opens Cheese Scripter Github
-powershell write-host -fore white ?Menu - Goes to Menu
+powershell write-host -back darkblue -fore white ?More - Opens other commands.
+powershell write-host -fore white ?Menu - Goes to Menu.
 powershell write-host -fore white ?Help - Shows Commands.
 powershell write-host -back blue -fore white ?New - Creates a new project.
 powershell write-host -back green -fore white ?Export - Exports your project to downloads.
@@ -124,8 +124,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?more" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -141,34 +141,6 @@ if "%commands%"=="?folder" goto OpenFolder
 
 goto help
 
-: Github
-color 07
-cls
-powershell write-host -back red -fore white Sending you to GitHub.
-powershell write-host -back blue -fore white ?Help
-start https://github.com/HolyCheeseMan/Cheese-Scripting/
-set /p commands= 
-if "%commands%"=="?Help" goto help
-if "%commands%"=="?Menu" goto menu
-if "%commands%"=="?help" goto help
-if "%commands%"=="?menu" goto menu
-if "%commands%"=="?Load" goto load
-if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
-if "%commands%"=="?new" goto new-file
-if "%commands%"=="?New" goto new-file
-if "%commands%"=="?Export" goto export
-if "%commands%"=="?export" goto export
-if "%commands%"=="?Notepad" goto Notepad
-if "%commands%"=="?notepad" goto Notepad
-if "%commands%"=="?Tutorial" goto Tutorial
-if "%commands%"=="?tutorial" goto Tutorial
-if "%commands%"=="?Tipsearch" goto Tipsearch
-if "%commands%"=="?tipsearch" goto Tipsearch
-if "%commands%"=="?Folder" goto OpenFolder
-if "%commands%"=="?folder" goto OpenFolder
-
 : Notepad
 cls
 powershell write-host -back red -fore white Only works while editing a script. Use ?Load
@@ -180,8 +152,8 @@ if "%filename%"=="?help" goto help
 if "%filename%"=="?menu" goto menu
 if "%filename%"=="?Load" goto load
 if "%filename%"=="?load" goto load
-if "%filename%"=="?Github" goto Github
-if "%filename%"=="?github" goto Github
+if "%filename%"=="?More" goto moreotpions
+if "%filename%"=="?More" goto moreotpions
 if "%filename%"=="?new" goto new-file
 if "%filename%"=="?New" goto new-file
 if "%filename%"=="?Export" goto export
@@ -208,8 +180,8 @@ if "%filename%"=="?help" goto help
 if "%filename%"=="?menu" goto menu
 if "%filename%"=="?Load" goto load
 if "%filename%"=="?load" goto load
-if "%filename%"=="?Github" goto Github
-if "%filename%"=="?github" goto Github
+if "%filename%"=="?More" goto moreotpions
+if "%filename%"=="?More" goto moreotpions
 if "%filename%"=="?new" goto new-file
 if "%filename%"=="?New" goto new-file
 if "%filename%"=="?Export" goto export
@@ -243,8 +215,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -272,8 +244,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -301,8 +273,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -331,8 +303,8 @@ if "%loadoption%"=="?help" goto help
 if "%loadoption%"=="?menu" goto menu
 if "%loadoption%"=="?Load" goto load
 if "%loadoption%"=="?load" goto load
-if "%loadoption%"=="?Github" goto Github
-if "%loadoption%"=="?github" goto Github
+if "%loadoption%"=="?More" goto moreotpions
+if "%loadoption%"=="?More" goto moreotpions
 if "%loadoption%"=="?new" goto new-file
 if "%loadoption%"=="?New" goto new-file
 if "%loadoption%"=="?Export" goto export
@@ -364,8 +336,8 @@ if "%filenameload%"=="?help" goto help
 if "%filenameload%"=="?menu" goto menu
 if "%filenameload%"=="?Load" goto load
 if "%filenameload%"=="?load" goto load
-if "%filenameload%"=="?Github" goto Github
-if "%filenameload%"=="?github" goto Github
+if "%filenameload%"=="?More" goto moreotpions
+if "%filenameload%"=="?More" goto moreotpions
 if "%filenameload%"=="?new" goto new-file
 if "%filenameload%"=="?New" goto new-file
 if "%filenameload%"=="?Notepad" goto Notepad
@@ -390,8 +362,8 @@ if "%scriptPath%"=="?help" goto help
 if "%scriptPath%"=="?menu" goto menu
 if "%scriptPath%"=="?Load" goto load
 if "%scriptPath%"=="?load" goto load
-if "%scriptPath%"=="?Github" goto Github
-if "%scriptPath%"=="?github" goto Github
+if "%scriptPath%"=="?More" goto moreotpions
+if "%scriptPath%"=="?More" goto moreotpions
 if "%scriptPath%"=="?new" goto new-file
 if "%scriptPath%"=="?New" goto new-file
 if "%scriptPath%"=="?Export" goto export
@@ -434,8 +406,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -474,8 +446,8 @@ if "%exportfile%"=="?help" goto help
 if "%exportfile%"=="?menu" goto menu
 if "%exportfile%"=="?Load" goto load
 if "%exportfile%"=="?load" goto load
-if "%exportfile%"=="?Github" goto Github
-if "%exportfile%"=="?github" goto Github
+if "%exportfile%"=="?More" goto moreotpions
+if "%exportfile%"=="?More" goto moreotpions
 if "%exportfile%"=="?new" goto new-file
 if "%exportfile%"=="?New" goto new-file
 if "%exportfile%"=="?Export" goto export
@@ -511,8 +483,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -538,8 +510,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -569,8 +541,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -594,8 +566,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -621,8 +593,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file-tutorial
 if "%commands%"=="?New" goto new-file-tutorial
 if "%commands%"=="?Export" goto export
@@ -651,8 +623,8 @@ if "%filename%"=="?help" goto help
 if "%filename%"=="?menu" goto menu
 if "%filename%"=="?Load" goto load
 if "%filename%"=="?load" goto load
-if "%filename%"=="?Github" goto Github
-if "%filename%"=="?github" goto Github
+if "%filename%"=="?More" goto moreotpions
+if "%filename%"=="?More" goto moreotpions
 if "%filename%"=="?new" goto new-file
 if "%filename%"=="?New" goto new-file
 if "%filename%"=="?Export" goto export
@@ -686,8 +658,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -715,8 +687,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -745,8 +717,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto loadtutorial
 if "%commands%"=="?load" goto loadtutorial
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -778,8 +750,8 @@ if "%loadoption%"=="?help" goto help
 if "%loadoption%"=="?menu" goto menu
 if "%loadoption%"=="?Load" goto load
 if "%loadoption%"=="?load" goto load
-if "%loadoption%"=="?Github" goto Github
-if "%loadoption%"=="?github" goto Github
+if "%loadoption%"=="?More" goto moreotpions
+if "%loadoption%"=="?More" goto moreotpions
 if "%loadoption%"=="?new" goto new-file
 if "%loadoption%"=="?New" goto new-file
 if "%loadoption%"=="?Export" goto export
@@ -812,8 +784,8 @@ if "%filenameload%"=="?help" goto help
 if "%filenameload%"=="?menu" goto menu
 if "%filenameload%"=="?Load" goto load
 if "%filenameload%"=="?load" goto load
-if "%filenameload%"=="?Github" goto Github
-if "%filenameload%"=="?github" goto Github
+if "%filenameload%"=="?More" goto moreotpions
+if "%filenameload%"=="?More" goto moreotpions
 if "%filenameload%"=="?new" goto new-file
 if "%filenameload%"=="?New" goto new-file
 if "%filenameload%"=="?Notepad" goto Notepad
@@ -858,8 +830,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -884,8 +856,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -932,8 +904,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -987,8 +959,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -1042,8 +1014,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -1089,8 +1061,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -1135,8 +1107,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto export
@@ -1179,8 +1151,8 @@ if "%code%"=="?help" goto help
 if "%code%"=="?menu" goto menu
 if "%code%"=="?Load" goto load
 if "%code%"=="?load" goto load
-if "%code%"=="?Github" goto Github
-if "%code%"=="?github" goto Github
+if "%code%"=="?More" goto moreotpions
+if "%code%"=="?More" goto moreotpions
 if "%code%"=="?new" goto new-file
 if "%code%"=="?New" goto new-file
 if "%code%"=="?Export" goto exporttutorial
@@ -1206,8 +1178,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -1249,8 +1221,8 @@ if "%exportfile%"=="?help" goto help
 if "%exportfile%"=="?menu" goto menu
 if "%exportfile%"=="?Load" goto load
 if "%exportfile%"=="?load" goto load
-if "%exportfile%"=="?Github" goto Github
-if "%exportfile%"=="?github" goto Github
+if "%exportfile%"=="?More" goto moreotpions
+if "%exportfile%"=="?More" goto moreotpions
 if "%exportfile%"=="?new" goto new-file
 if "%exportfile%"=="?New" goto new-file
 if "%exportfile%"=="?Export" goto export
@@ -1281,8 +1253,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -1320,8 +1292,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -1370,8 +1342,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1559,8 +1531,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1600,8 +1572,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1634,8 +1606,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1668,8 +1640,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1706,8 +1678,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1740,8 +1712,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1775,8 +1747,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1809,8 +1781,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1843,8 +1815,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1877,8 +1849,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1922,8 +1894,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1956,8 +1928,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -1990,8 +1962,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -2024,8 +1996,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -2052,8 +2024,8 @@ if "%search%"=="?help" goto help
 if "%search%"=="?menu" goto menu
 if "%search%"=="?Load" goto load
 if "%search%"=="?load" goto load
-if "%search%"=="?Github" goto Github
-if "%search%"=="?github" goto Github
+if "%search%"=="?More" goto moreotpions
+if "%search%"=="?More" goto moreotpions
 if "%search%"=="?new" goto new-file
 if "%search%"=="?New" goto new-file
 if "%search%"=="?Export" goto export
@@ -2081,8 +2053,8 @@ if "%commands%"=="?help" goto help
 if "%commands%"=="?menu" goto menu
 if "%commands%"=="?Load" goto load
 if "%commands%"=="?load" goto load
-if "%commands%"=="?Github" goto Github
-if "%commands%"=="?github" goto Github
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?more" goto moreotpions
 if "%commands%"=="?new" goto new-file
 if "%commands%"=="?New" goto new-file
 if "%commands%"=="?Export" goto export
@@ -2099,14 +2071,93 @@ goto OpenFolder
 
 endlocal
 
+: moreotpions
+color 07
+cls
+powershell write-host -back red -fore white 'More' Commands:
+powershell write-host -back blue -fore white Main commands can still be used.
+powershell write-host -fore white  
+powershell write-host -back darkyellow -fore white Other Commands:
+echo ?Github - Opens the Github Page.
+echo ?Web - Opens the Main Website.
+echo ?Fullinstall - Fully Installs Cheese Scripting.
+echo ?Unistall - Removes the app from your PC. (Only if installed.)
+set /p commands= 
+if "%commands%"=="?Github" start https://github.com/HolyCheeseMan/Cheese-Scripting
+if "%commands%"=="?github" start https://github.com/HolyCheeseMan/Cheese-Scripting
+if "%commands%"=="?Web" goto webdownload
+if "%commands%"=="?web" goto webdownload
+if "%commands%"=="?Fullinstall" goto fulldownload
+if "%commands%"=="?fullinstall" goto fulldownload
+if "%commands%"=="?unistall" goto Unistall
+if "%commands%"=="?Unistall" goto Unistall
+if "%commands%"=="?Help" goto help
+if "%commands%"=="?Menu" goto menu
+if "%commands%"=="?help" goto help
+if "%commands%"=="?menu" goto menu
+if "%commands%"=="?Load" goto load
+if "%commands%"=="?load" goto load
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?More" goto moreotpions
+if "%commands%"=="?new" goto new-file
+if "%commands%"=="?New" goto new-file
+if "%commands%"=="?Export" goto export
+if "%commands%"=="?export" goto export
+if "%commands%"=="?Notepad" goto Notepad
+if "%commands%"=="?notepad" goto Notepad
+if "%commands%"=="?Tutorial" goto Tutorial
+if "%commands%"=="?tutorial" goto Tutorial
+if "%commands%"=="?Tipsearch" goto Tipsearch
+if "%commands%"=="?tipsearch" goto Tipsearch
+if "%commands%"=="?Folder" goto OpenFolder
+if "%commands%"=="?folder" goto OpenFolder
+
+goto moreotpions
+
+: webdownload
+cls
+set "url=https://raw.githubusercontent.com/HolyCheeseMan/Cheese-Scripting/Main/CheeseScripting-Web.html"
+set "destination=C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Web.html"
+
+if exist "%destination%" (
+	goto webdownload2
+)
+
+curl -L -o "%destination%" "%url%"
+goto webdownload
+: webdownload2
+start "" "%destination%"
+goto moreotpions
+
+: fulldownload
+cls
+set "url=https://raw.githubusercontent.com/HolyCheeseMan/Cheese-Scripting/Main/0.1.2-Installer.bat"
+set "destination=C:\Users\%USERNAME%\Downloads\0.1.2-Installer.bat"
+
+if exist "%destination%" (
+	goto fulldownload2
+)
+
+curl -L -o "%destination%" "%url%"
+goto webdownload
+: fulldownload2
+start "" "C:\Users\%USERNAME%\Downloads"
+goto moreotpions
+
+
 : crash
 cls
 powershell write-host -back darkred -fore white "Error has occured when loading the script"
 powershell write-host -back darkred -fore white "Please restart the program manually or restart by using ?Restart"
 powershell write-host -fore white  
-powershell write-host -back darkblue -fore white "'If' problem continues than reinstall or message on Github."
+powershell write-host -back darkblue -fore white "'If' problem continues than reinstall or message on moreotpions."
 powershell write-host -back blue -fore white "?Restart"
 set /p commands= 
 if "%commands%"=="?Restart" goto startscriptinstall
 if "%commands%"=="?restart" goto startscriptinstall
 goto crash
+
+: Unistall
+@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Cheese Scripting.bat">"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Unistall.bat"
+cmd /k "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Unistall.bat"
+exit
