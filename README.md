@@ -14,25 +14,25 @@ Cheese Scripting uses .bat to run, and has a variety of different commands/tools
 
 Commands (will be updated in the future):
 
-**?More - Opens other commands.**
+- **?More - Opens other commands.**
 
-**?Menu - Goes to Menu.**
+- **?Menu - Goes to Menu.**
 
-**?Help - Shows Commands.**
+- **?Help - Shows Commands.**
 
-**?New - Creates a new project.**
+- **?New - Creates a new project.**
 
-**?Export - Exports your project to downloads.**
+- **?Export - Exports your project to downloads.**
 
-**?Load - Loads a script.**
+- **?Load - Loads a script.**
 
-**?Notepad - Opens notepad to current script.**
+- **?Notepad - Opens notepad to current script.**
 
-**?Tutorial - Advanced comprehensive beginners tutorial to batch.**
+- **?Tutorial - Advanced comprehensive beginners tutorial to batch.**
 
-**?Tipsearch - Search for coding tips.**
+- **?Tipsearch - Search for coding tips.**
 
-**?Folder - Opens Plugins folder.**
+- **?Folder - Opens Plugins folder.**
 
 
 
