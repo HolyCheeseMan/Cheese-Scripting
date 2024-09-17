@@ -1,22 +1,48 @@
+@echo off
+
+:: BatchGotAdmin
+:-------------------------------------
+REM  --> Check for permissions
+    IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
+>nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
+) ELSE (
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+)
+
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
+
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    set params= %*
+    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%temp%\getadmin.vbs"
+
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    pushd "%CD%"
+    CD /D "%~dp0"
+:--------------------------------------    
+
 : startscriptinstall
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\"
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\APP\"
-title Cheese Scripting Installer 0.1.2
+title Cheese Scripting Installer
 cls
 @echo off
 cls
+powershell write-host -back blue -fore white Version: VD17M09Y24
+powershell write-host -fore white  
 powershell write-host -back darkred -fore white This is an OPTIONAL But RECOMMENDED Cheese Scripting Installer.
 powershell write-host -back red -fore white You may run Cheese Scripting alone 'if' wanted.
 powershell write-host -fore white  
-powershell write-host -back darkyellow -fore white Please give this installer file Administrator permission 'if' you see this:
-echo ERROR: Access is denied.
-echo ERROR: Access is denied.
-echo ERROR: Access is denied.
-echo ERROR: Access is denied.
-echo ERROR: Access is denied.
-echo ERROR: Access is denied.
-echo ERROR: Access is denied.
+powershell write-host -back darkyellow -fore white Install Version: 0.1.2
 powershell write-host -back darkgreen -fore white Write '"1"' To Install.
 set /p installop= 
 if "%installop%"=="1" goto installprocess
@@ -74,16 +100,35 @@ cscript //nologo "%temp%\CreateShortcut.vbs"
 
 del "%temp%\CreateShortcut.vbs"
 
-@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Cheese Scripting.bat">"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Unistall.bat"
+mkdir "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\"
+@echo : begin>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo title Cheese Scripting Unistaller>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo @echo off>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo cls>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo powershell write-host -back blue -fore white Would you like to unistall Cheese Scripting?>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo powershell write-host -back green -fore white Type 1 - Unistall>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo set /p question= >>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo if "%%question%%"=="1" goto unistall>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo goto begin>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo : unistall>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Cheese Scripting.bat">>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\CSCICON.ico">>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\processScript.ps1">>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Web.html">>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CheeseScripting" /f>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo cls>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo powershell write-host -back darkyellow -fore white Unistalled>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+@echo pause>>"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
+
 
 echo Asset Installed
 echo Configuring...
 set "regKey=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CheeseScripting"
 set "appName=Cheese Scripting"
-set "appVersion=0.1.0"
+set "appVersion=Installed On 0.1.2"
 set "appPublisher=Holy Cheese Man"
 set "appInstallLocation=C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Cheese Scripting.bat"
-set "appUninstallString=C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Unistall.bat"
+set "appUninstallString=C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Unistall.bat"
 echo Checking...
 @echo off
 set "targetBatchPath=C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Cheese Scripting.bat"
@@ -112,6 +157,7 @@ echo Opening Downloads Folder...
 start "" "%USERPROFILE%\Downloads"
 echo Finishing.
 : F4
+cls
 powershell write-host -back green -fore white Files Installed.
 powershell write-host -back blue -fore white Shortcut in Downloads.
 pause
