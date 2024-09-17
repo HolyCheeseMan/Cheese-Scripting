@@ -3,6 +3,8 @@ Advanced application for making coding batch easy for windows.
 
 Cheese Scripting uses .bat to run, and has a variety of different commands/tools to make your life easier!
 
+Install here: https://github.com/HolyCheeseMan/Cheese-Scripting/blob/Main/0.1.2-Installer.bat
+
 **It is recommended to use the Installer for this application.**
 
 Commands (will be updated in the future):
@@ -29,4 +31,4 @@ Commands (will be updated in the future):
 
 
 
-MORE TO BE ADDED!
+
