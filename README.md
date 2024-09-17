@@ -1,8 +1,10 @@
 # Cheese-Scripting
+
+**Install here:** https://github.com/HolyCheeseMan/Cheese-Scripting/blob/Main/0.1.2-Installer.bat
+
 ![image](https://github.com/user-attachments/assets/5265ebde-9165-41aa-8882-69c7071b2f3e)
 
 
-**Install here:** https://github.com/HolyCheeseMan/Cheese-Scripting/blob/Main/0.1.2-Installer.bat
 
 Advanced application for making coding batch easy for windows.
 
