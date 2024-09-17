@@ -1,5 +1,6 @@
 # Cheese-Scripting
-![image](https://github.com/user-attachments/assets/3a370ffd-2292-4b5f-9c1b-9e4f8e560f22)
+![image](https://github.com/user-attachments/assets/5265ebde-9165-41aa-8882-69c7071b2f3e)
+
 
 **Install here:** https://github.com/HolyCheeseMan/Cheese-Scripting/blob/Main/0.1.2-Installer.bat
 
