@@ -1,15 +1,11 @@
 @echo off
 
-:: BatchGotAdmin
-:-------------------------------------
-REM  --> Check for permissions
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) ELSE (
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 )
 
-REM --> If error flag set, we do not have admin.
 if '%errorlevel%' NEQ '0' (
     echo Requesting administrative privileges...
     goto UACPrompt
@@ -26,8 +22,7 @@ if '%errorlevel%' NEQ '0' (
 
 :gotAdmin
     pushd "%CD%"
-    CD /D "%~dp0"
-:--------------------------------------    
+    CD /D "%~dp0"  
 
 : startscriptinstall
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
@@ -157,7 +152,6 @@ echo Opening Downloads Folder...
 start "" "%USERPROFILE%\Downloads"
 echo Finishing.
 : F4
-cls
 powershell write-host -back green -fore white Files Installed.
 powershell write-host -back blue -fore white Shortcut in Downloads.
 pause
