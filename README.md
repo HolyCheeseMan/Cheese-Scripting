@@ -2,7 +2,7 @@
 
 **Install here:** https://github.com/HolyCheeseMan/Cheese-Scripting/blob/Main/0.1.2-Installer.bat
 
-**Or get Cheese Scripting +**: https://github.com/HolyCheeseMan/CheeseScriptingPLUS/blob/Main/Installer.exe
+**Or get Cheese Scripting +**: https://github.com/HolyCheeseMan/CheeseScriptingPLUS/
 
 ![image](https://github.com/user-attachments/assets/5265ebde-9165-41aa-8882-69c7071b2f3e)
 
