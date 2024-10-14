@@ -32,6 +32,12 @@ Commands (will be updated in the future):
 
 - **?Tutorial - Advanced comprehensive beginners tutorial to batch.**
 
+# Thing to note:
+
+**If you are doing manual installation included with the uninstaller, than name the `CheeseScripting.bat` file to `Cheese Scripting.bat`**
+
+This is due to limitations to this application as it is not supported often or at all.
+
 - **?Tipsearch - Search for coding tips.**
 
 - **?Folder - Opens Plugins folder.**
