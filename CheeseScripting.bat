@@ -1,10 +1,13 @@
 : startscriptinstall
 @echo off
+echo Loading...
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\"
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\"
 mkdir "C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\APP\"
+echo Folder Creation Verified
 set Projects=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Projects\
 set Tutorial=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\Tutorial\
+echo Variables Set
 set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseScripting\APP\processScript.ps1
 @echo param (>%processscriptfile%
 @echo     [string]$scriptPath>>%processscriptfile%
@@ -44,6 +47,7 @@ set processscriptfile=C:\Users\%USERNAME%\appdata\roaming\HolyCheeseMan\CheeseSc
 @echo         Write-Host $trimmedLine>>%processscriptfile%
 @echo     }>>%processscriptfile%
 @echo }>>%processscriptfile%
+echo Fixed %processscriptfile%
 
 
 goto menu
@@ -2081,7 +2085,7 @@ powershell write-host -back darkyellow -fore white Other Commands:
 echo ?Github - Opens the Github Page.
 echo ?Web - Opens the Main Website.
 echo ?Fullinstall - Fully Installs Cheese Scripting.
-echo ?Unistall - Removes the app from your PC. (Only if installed.)
+echo ?Uninstall - Removes the app from your PC. (Only if used installer.)
 set /p commands= 
 if "%commands%"=="?Github" start https://github.com/HolyCheeseMan/Cheese-Scripting
 if "%commands%"=="?github" start https://github.com/HolyCheeseMan/Cheese-Scripting
@@ -2089,8 +2093,8 @@ if "%commands%"=="?Web" goto webdownload
 if "%commands%"=="?web" goto webdownload
 if "%commands%"=="?Fullinstall" goto fulldownload
 if "%commands%"=="?fullinstall" goto fulldownload
-if "%commands%"=="?unistall" goto Unistall
-if "%commands%"=="?Unistall" goto Unistall
+if "%commands%"=="?uninstall" goto Uninstall
+if "%commands%"=="?Uninstall" goto Uninstall
 if "%commands%"=="?Help" goto help
 if "%commands%"=="?Menu" goto menu
 if "%commands%"=="?help" goto help
@@ -2157,7 +2161,6 @@ if "%commands%"=="?Restart" goto startscriptinstall
 if "%commands%"=="?restart" goto startscriptinstall
 goto crash
 
-: Unistall
-@echo del "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Cheese Scripting.bat">"C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Unistall.bat"
-cmd /k "C:\Users\%USERNAME%\AppData\Roaming\HolyCheeseMan\CheeseScriptig\APP\Unistall.bat"
+: Uninstall
+start "" "C:\Users\%username%\AppData\Roaming\HolyCheeseMan\CheeseScripting\APP\Uninstaller.exe"
 exit
